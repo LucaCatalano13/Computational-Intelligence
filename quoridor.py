@@ -9,6 +9,7 @@ BOARD_SIZE = 9
 def cell_click(event, b):
     row, col = event.widget.grid_info()["row"], event.widget.grid_info()["column"]
     print(f"Clicked on cell ({row}, {col})")
+    print(b)
     b.configure(bg='yellow')  # Change to your desired color
 
 # Function to draw the game board
@@ -19,8 +20,9 @@ def draw_board(window, G):
         if G.nodes[(row, col)]['value'] == "R":
             cell_label.configure(bg='red')
         cell_label = tk.Label(window, width=4, height=2, relief="solid")
-        cell_label.grid(row=row, column=col)
+        cell_label.grid(row=row, column=col, padx=2, pady=2)  # Add padx and pady for spacing
         cell_label.bind("<Button-1>", lambda event, cell_label=cell_label: cell_click(event, cell_label))
+
 
 # Function to place a horizontal wall
 def place_horizontal_wall():
