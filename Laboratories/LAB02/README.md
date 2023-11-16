@@ -1,4 +1,4 @@
-Lab2 done with [Luca Catalano](https://github.com/LucaCatalano13)!
+Lab2 done with [Claudio Savelli](https://github.com/ClaudioSavelli)!
 
 # Task
 
