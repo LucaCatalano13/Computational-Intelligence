@@ -59,4 +59,6 @@ def fixed_generations(generation, every):
 
 def fitness_based(fitness_values, threshold = 0.1):
     means = np.mean(fitness_values, axis=1)
-    return abs(np.diff(means)) >= threshold
+    means = np.reshape(means, (len(means), 1))
+    diff_mat = means - means.transpose()
+    return (diff_mat >= threshold).any()
