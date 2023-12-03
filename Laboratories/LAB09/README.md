@@ -1,7 +1,10 @@
 # Lab09 done with [Claudio Savelli](https://github.com/ClaudioSavelli/computational-intelligence-PoliTO/tree/main/Laboratory%20Activities/Lab3), [Florentin Udrea](https://github.com/florentin1304/computational-intelligence/tree/main/Laboratories/Lab9)!
 
+# BASELINE
+
+We evaluate our results with 10 iterations on each experiments. Here we published the mean values.
+
 HYPERPARAMETER
-===
 
 MU = 15
 
@@ -18,11 +21,6 @@ LENGTH_SOLUTION = 1000
 NUMBER_GENERATIONS = 3_000
 
 COOLDOWN_TIME = 100
-
-# BASELINE
-
-We evaluate our results with 10 iterations on each experiments. Here we published the mean values.
-
 
 |          |                  |                 |                   | Problem 1 |         | Problem 2 |         | Problem 5 |         | Problem 10 |         |
 |----------|------------------|---------------- |-------------------|-----------|---------|-----------|---------|-----------|---------|------------|---------|
@@ -51,3 +49,60 @@ We evaluate our results with 10 iterations on each experiments. Here we publishe
 | Plus     | Torunament         | 3 bit  | Uniform crossover |0.999|15831|0.799|32837|0.484|46579|0.309|51759|       |         |
 | Plus     | Torunament         | 3 bit           | One cut           |0.999|30925|0.880|52846|0.533|83469|0.266|58839|       |         |
 | Plus     | Torunament         | 3 bit           | Two cut           |0.999|10689|0.995|31199|0.391|7752|0.305|6406|       |         |
+
+
+## ISLANDS
+
+We evaluate our results with 10 iterations on each experiments. Here we published the mean values.
+
+HYPERPARAMETER
+
+MU = 15
+
+LAMBDA = 30
+
+MUTATION_PROB = 0.2
+
+DYNAMIC_MUTATION_PROB = True
+
+DIVERSITY_THRESHOLD = 20
+
+LENGTH_SOLUTION = 1000
+
+NUMBER_GENERATIONS = 3_000
+
+COOLDOWN_TIME = 100
+
+NUM_ISLANDS = 5
+
+|          |                  |                 |                   ||| Problem 1 |         | Problem 2 |         | Problem 5 |         | Problem 10 |         |
+|----------|------------------|---------------- |-------------------|-------|-------|-----------|---------|-----------|---------|-----------|---------|------------|---------|
+| STRATEGY | PARENT SELECTION | MUTATION        | REPRODUCTION      |WHEN TO SWAP|MIGRATION| SCORE     | CALLS | SCORE     | CALLS | SCORE     | CALLS | SCORE      | CALLS |
+| Plus    | Roulette         | One single bit  | Two cut            |Fitness |Fitness |0.753|112338|0.769|79672|0.4624|32396|0.357|43093|
+
+## ISLANDS SEGREGATION
+
+We evaluate our results with 10 iterations on each experiments. Here we published the mean values.
+
+HYPERPARAMETER
+
+MU = 15
+
+LAMBDA = 30
+
+MUTATION_PROB = 0.2
+
+DYNAMIC_MUTATION_PROB = True
+
+DIVERSITY_THRESHOLD = 20
+
+LENGTH_SOLUTION = 1000
+
+NUMBER_GENERATIONS = 3_000
+
+COOLDOWN_TIME = 100
+
+|          |                  |                 |                   ||| Problem 1 |         | Problem 2 |         | Problem 5 |         | Problem 10 |         |
+|----------|------------------|---------------- |-------------------|-------|-------|-----------|---------|-----------|---------|-----------|---------|------------|---------|
+| STRATEGY | PARENT SELECTION | MUTATION        | REPRODUCTION      |WHEN TO SWAP|MIGRATION| SCORE     | CALLS | SCORE     | CALLS | SCORE     | CALLS | SCORE      | CALLS |
+| Plus    | Roulette         | One single bit  | Two cut            |Fitness |Fitness |<span style="color:red">**1.0**</span>|<span style="color:red">**22378**</span>|<span style="color:red">**0.999**</span>|<span style="color:red">**72020**</span>|<span style="color:red">**0.565**</span>|<span style="color:red">**51970**</span>|<span style="color:red">**0.443**</span>|<span style="color:red">**70072**</span>|
