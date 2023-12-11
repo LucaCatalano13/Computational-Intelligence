@@ -1,4 +1,4 @@
-# Lab09 done with [Claudio Savelli](https://github.com/ClaudioSavelli/computational-intelligence-PoliTO/tree/main/Laboratory%20Activities/Lab3), [Florentin Udrea](https://github.com/florentin1304/computational-intelligence/tree/main/Laboratories/Lab9)!
+# Lab09 done with [Claudio Savelli](https://github.com/ClaudioSavelli/computational-intelligence-PoliTO/tree/main/Laboratory%20Activities/Lab3), [Florentin Udrea](https://github.com/florentin1304)!
 
 # BASELINE
 
@@ -53,56 +53,61 @@ COOLDOWN_TIME = 100
 
 ## ISLANDS
 
-We evaluate our results with 10 iterations on each experiments. Here we published the mean values.
+We evaluate our results with 30 iterations on each experiments. Here we published the mean values.
 
-HYPERPARAMETER
 
-MU = 15
+PARENT_SELECTION = Roulette
+MUTATION = One single bit
+REPRODUCTION = Two cut
 
-LAMBDA = 30
 
-MUTATION_PROB = 0.2
-
-DYNAMIC_MUTATION_PROB = True
-
-DIVERSITY_THRESHOLD = 20
-
-LENGTH_SOLUTION = 1000
-
-NUMBER_GENERATIONS = 3_000
-
-COOLDOWN_TIME = 100
-
-NUM_ISLANDS = 5
-
-|          |                  |                 |                   ||| Problem 1 |         | Problem 2 |         | Problem 5 |         | Problem 10 |         |
-|----------|------------------|---------------- |-------------------|-------|-------|-----------|---------|-----------|---------|-----------|---------|------------|---------|
-| STRATEGY | PARENT SELECTION | MUTATION        | REPRODUCTION      |WHEN TO SWAP|MIGRATION| SCORE     | CALLS | SCORE     | CALLS | SCORE     | CALLS | SCORE      | CALLS |
-| Plus    | Roulette         | One single bit  | Two cut            |Fitness |Fitness |0.753|112338|0.769|79672|0.4624|32396|0.357|43093|
+|          ||| Problem 1 |         | Problem 2 |         | Problem 5 |         | Problem 10 |         |
+|----------|-------|-------|-----------|---------|-----------|---------|-----------|---------|------------|---------|
+| ISLAND STRATEGY |WHEN TO SWAP|MIGRATION| SCORE     | CALLS | SCORE     | CALLS | SCORE     | CALLS | SCORE      | CALLS |
+| Base    | Fixed Generation | Random Swap |1.0|23'596.26|0.992|87'507.43|0.345|37'537.77|0.340|34'720.7|
+| Base    | Fixed Generation | Ring Topology |1.0|31'325.4|0.9758|154'722.03|0.480|42'044.23|0.333|36'512.1|
+| Base    | Fixed Generation | Best Fitness |1.0|33'409.56| 0.959|160'831.06|0.476|34'824.8|0.317|32070.7|
+| Base    | Fitness Based | Random Swap |1.0|22'255.46|0.985|99'106.9|0.493|38'394.96|0.356|42'583.8|
+| Base    | Fitness Based| Ring Topology |1.0|22'894.96|0.967|162'121.8|0.48539|36'711.3|0.351|45'035.7|
+| Base    | Fitness Based | Best Fitness |1.0|22'840.26|0.862|115'951.26|0.507|33'822.43|0.353|39'653.3|
 
 ## ISLANDS SEGREGATION
 
-We evaluate our results with 10 iterations on each experiments. Here we published the mean values.
+We evaluate our results with 30 iterations on each experiments. Here we published the mean values.
 
-HYPERPARAMETER
+WHEN TO SWAP = Fitness Based
+MIGRATION = Random Swap
 
-MU = 15
 
-LAMBDA = 30
+|          ||| Problem 1 |         | Problem 2 |         | Problem 5 |         | Problem 10 |         |
+|----------|-------|-------|-----------|---------|-----------|---------|-----------|---------|------------|---------|
+| ISLAND STRATEGY |WHEN TO SWAP|MIGRATION| SCORE     | CALLS | SCORE     | CALLS | SCORE     | CALLS | SCORE      | CALLS |
+| Island segregation    |Fitness Based | Random Swap |||||||||
 
-MUTATION_PROB = 0.2
+## VALHALLA ISLAND
 
-DYNAMIC_MUTATION_PROB = True
+We evaluate our results with 30 iterations on each experiments. Here we published the mean values.
 
-DIVERSITY_THRESHOLD = 20
 
-LENGTH_SOLUTION = 1000
+WHEN TO SWAP = Fitness Based
+MIGRATION = Random Swap
 
-NUMBER_GENERATIONS = 3_000
 
-COOLDOWN_TIME = 100
+|          ||| Problem 1 |         | Problem 2 |         | Problem 5 |         | Problem 10 |         |
+|----------|-------|-------|-----------|---------|-----------|---------|-----------|---------|------------|---------|
+| ISLAND STRATEGY |WHEN TO SWAP|MIGRATION| SCORE     | CALLS | SCORE     | CALLS | SCORE     | CALLS | SCORE      | CALLS |
+| Valhalla island    |Fitness Based | Random Swap |||||||||
 
-|          |                  |                 |                   ||| Problem 1 |         | Problem 2 |         | Problem 5 |         | Problem 10 |         |
-|----------|------------------|---------------- |-------------------|-------|-------|-----------|---------|-----------|---------|-----------|---------|------------|---------|
-| STRATEGY | PARENT SELECTION | MUTATION        | REPRODUCTION      |WHEN TO SWAP|MIGRATION| SCORE     | CALLS | SCORE     | CALLS | SCORE     | CALLS | SCORE      | CALLS |
-| Plus    | Roulette         | One single bit  | Two cut            |Fitness |Fitness |<span style="color:red">**1.0**</span>|<span style="color:red">**22378**</span>|<span style="color:red">**0.999**</span>|<span style="color:red">**72020**</span>|<span style="color:red">**0.565**</span>|<span style="color:red">**51970**</span>|<span style="color:red">**0.443**</span>|<span style="color:red">**70072**</span>|
+## SPECIALIZED ISLANDS
+
+We evaluate our results with 30 iterations on each experiments. Here we published the mean values.
+
+
+WHEN TO SWAP = Fitness Based
+MIGRATION = Random Swap
+
+
+|          ||| Problem 1 |         | Problem 2 |         | Problem 5 |         | Problem 10 |         |
+|----------|-------|-------|-----------|---------|-----------|---------|-----------|---------|------------|---------|
+| ISLAND STRATEGY |WHEN TO SWAP|MIGRATION| SCORE     | CALLS | SCORE     | CALLS | SCORE     | CALLS | SCORE      | CALLS |
+| Valhalla island    |Fitness Based | Random Swap |||||||||
