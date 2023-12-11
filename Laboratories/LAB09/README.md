@@ -1,4 +1,4 @@
-# Lab09 done with [Claudio Savelli](https://github.com/ClaudioSavelli/computational-intelligence-PoliTO/tree/main/Laboratory%20Activities/Lab3), [Florentin Udrea](https://github.com/florentin1304)!
+# Lab09 done with [Claudio Savelli](https://github.com/ClaudioSavelli/computational-intelligence-PoliTO/tree/main/Laboratory%20Activities/Lab3), [Florentin Udrea](https://github.com/florentin1304/computational-intelligence/tree/main/Laboratories)!
 
 # BASELINE
 
@@ -82,7 +82,7 @@ MIGRATION = Random Swap
 |          ||| Problem 1 |         | Problem 2 |         | Problem 5 |         | Problem 10 |         |
 |----------|-------|-------|-----------|---------|-----------|---------|-----------|---------|------------|---------|
 | ISLAND STRATEGY |WHEN TO SWAP|MIGRATION| SCORE     | CALLS | SCORE     | CALLS | SCORE     | CALLS | SCORE      | CALLS |
-| Island segregation    |Fitness Based | Random Swap |||||||||
+| Island segregation    |Fitness Based | Random Swap |1.0|22941.66|0.9894|100'672.56|0.527|65'083.6|0.375|62'032.83|
 
 ## VALHALLA ISLAND
 
@@ -96,9 +96,9 @@ MIGRATION = Random Swap
 |          ||| Problem 1 |         | Problem 2 |         | Problem 5 |         | Problem 10 |         |
 |----------|-------|-------|-----------|---------|-----------|---------|-----------|---------|------------|---------|
 | ISLAND STRATEGY |WHEN TO SWAP|MIGRATION| SCORE     | CALLS | SCORE     | CALLS | SCORE     | CALLS | SCORE      | CALLS |
-| Valhalla island    |Fitness Based | Random Swap |||||||||
+| Valhalla island    |Fitness Based | Random Swap |1.0|27052.68| 0.997 | 107739.93 | 0.495|30052.23|0.345|34369.7|
 
-## SPECIALIZED ISLANDS
+## EXPERT ISLANDS
 
 We evaluate our results with 30 iterations on each experiments. Here we published the mean values.
 
@@ -110,4 +110,36 @@ MIGRATION = Random Swap
 |          ||| Problem 1 |         | Problem 2 |         | Problem 5 |         | Problem 10 |         |
 |----------|-------|-------|-----------|---------|-----------|---------|-----------|---------|------------|---------|
 | ISLAND STRATEGY |WHEN TO SWAP|MIGRATION| SCORE     | CALLS | SCORE     | CALLS | SCORE     | CALLS | SCORE      | CALLS |
-| Valhalla island    |Fitness Based | Random Swap |||||||||
+| Expert islands    | - | - |0.612|17592.63|0.589|33882.2| 0.453 | 36734.83|0.326|28360.13|
+
+Some hyperparameter tuning combinations:
+
+MU = 15
+LAMBDA = 30
+COOLDOWN_TIME = 20
+NUM_ISLANDS = 50
+
+|          ||| Problem 1 |         | Problem 2 |         | Problem 5 |         | Problem 10 |         |
+|----------|-------|-------|-----------|---------|-----------|---------|-----------|---------|------------|---------|
+| ISLAND STRATEGY |WHEN TO SWAP|MIGRATION| SCORE     | CALLS | SCORE     | CALLS | SCORE     | CALLS | SCORE      | CALLS |
+| Expert islands    | - | - | 0.87 | 34896.86 | 0.833 | 34786.0 | 0.74 | 34938.93 | 0.775 | 34856.0 |
+
+MU = 5
+LAMBDA = 15
+COOLDOWN_TIME = 20
+NUM_ISLANDS = 100
+
+|          ||| Problem 1 |         | Problem 2 |         | Problem 5 |         | Problem 10 |         |
+|----------|-------|-------|-----------|---------|-----------|---------|-----------|---------|------------|---------|
+| ISLAND STRATEGY |WHEN TO SWAP|MIGRATION| SCORE     | CALLS | SCORE     | CALLS | SCORE     | CALLS | SCORE      | CALLS |
+| Expert islands    | - | - | 1.0 | 16732.73 |1.0| 19462.13 | 1.0 | 18400.26| 0.996| 16953.56|
+
+MU = 3
+LAMBDA = 10
+COOLDOWN_TIME = 5
+NUM_ISLANDS = 250
+
+|          ||| Problem 1 |         | Problem 2 |         | Problem 5 |         | Problem 10 |         |
+|----------|-------|-------|-----------|---------|-----------|---------|-----------|---------|------------|---------|
+| ISLAND STRATEGY |WHEN TO SWAP|MIGRATION| SCORE     | CALLS | SCORE     | CALLS | SCORE     | CALLS | SCORE      | CALLS |
+| Expert islands    | - | - | 1.0 | 2490.06 |1.0| 2564.86 | 1.0 | 2536.93 | 1.0 | 2514.9 |
