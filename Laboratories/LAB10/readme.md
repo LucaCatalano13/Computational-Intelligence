@@ -26,3 +26,14 @@ python3 play.py -p "name_file.pkl" -t 5000
 ## Automated Agent Testing
 
 Utilize `lab10.ipynb` to test the pre-trained agent, allowing it to play automatically in addition to running 1000 different random plays. Additionally, there's an option for you to play against the agent.
+
+### Results
+
+Agent trained       | Opponent                          | Opponent starts first     | % Wins  | 
+--------------------|-----------------------------------|---------------------------|---------|
+Only Random         | Random player                     | Random                    | 92.8    |
+Random + MyStrategy | Random player                     | Random                    | 92.7    |
+Only Random         | Me                                | No                        | RL WON  |
+Random + MyStrategy | Me                                | No                        | Draw    |
+Only Random         | Me                                | Yes                       | Draw    |
+Random + MyStrategy | Me                                | Yes                       | Draw    |
