@@ -21,9 +21,6 @@ class MinMaxPlayer(Player):
             if m.value == slide.value:
                 slide = m
                 break
-        print(g.current_player_idx)
-        print(g._board)
-        print(from_pos, slide)
         return from_pos, slide
 
     def alphabeta(self, game: 'GameLogicWrapper', alpha, beta, depth):
