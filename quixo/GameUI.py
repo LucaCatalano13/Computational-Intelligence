@@ -1,6 +1,5 @@
 import pygame
 import sys
-from pgu import gui
 
 from game import Game, Player, Move
 from copy import deepcopy
