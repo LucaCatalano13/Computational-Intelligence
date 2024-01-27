@@ -5,6 +5,7 @@ import numpy as np
 
 # Rules on PDF
 
+
 class Move(Enum):
     '''
     Selects where you want to place the taken piece. The rest of the pieces are shifted
@@ -13,6 +14,7 @@ class Move(Enum):
     BOTTOM = 1
     LEFT = 2
     RIGHT = 3
+
 
 class Player(ABC):
     def __init__(self) -> None:
@@ -29,6 +31,7 @@ class Player(ABC):
         return values: this method shall return a tuple of X,Y positions and a move among TOP, BOTTOM, LEFT and RIGHT
         '''
         pass
+
 
 class Game(object):
     def __init__(self) -> None:
@@ -81,21 +84,44 @@ class Game(object):
             return self._board[0, -1]
         return -1
 
+    ### MODIFIED >>>
+    def get_hashed_state(self):
+        symbols = {-1: "=", 0:"X", 1:"O"}
+        state = self.get_board().flatten()
+        hashed_state = "".join(symbols[square] for square in state)
+
+        return hashed_state
+    ### MODIFIED <<<
+
     def play(self, player1: Player, player2: Player) -> int:
         '''Play the game. Returns the winning player'''
         players = [player1, player2]
         winner = -1
+
+        ### MODIFIED >>>
+        history = []
+        ### MODIFIED <<<
         while winner < 0:
+            ### MODIFIED >>>
+            history.append(self.get_hashed_state())
+            if len(history) > 10 and len(np.unique(history[-10:])) == 2:
+                return -1
+            ### MODIFIED <<<
+
             self.current_player_idx += 1
             self.current_player_idx %= len(players)
+            # print("="*30)
+            # print("Player to move", players[self.current_player_idx].__class__.__name__ )
+            # print(self._board)
             ok = False
             while not ok:
-                from_pos, slide = players[self.current_player_idx].make_move(self)
-                ok = self.move(from_pos, slide, self.current_player_idx)
+                from_pos, slide = players[self.current_player_idx].make_move(
+                    self)
+                ok = self.__move(from_pos, slide, self.current_player_idx)
             winner = self.check_winner()
         return winner
 
-    def move(self, from_pos: tuple[int, int], slide: Move, player_id: int) -> bool:
+    def __move(self, from_pos: tuple[int, int], slide: Move, player_id: int) -> bool:
         '''Perform a move'''
         if player_id > 2:
             return False
@@ -205,6 +231,12 @@ class Game(object):
                 # move the piece down
                 self._board[(self._board.shape[0] - 1, from_pos[1])] = piece
         return acceptable
+    
+    ### MODIFIED >>>
+    ### Methods added to make the game playable interactively with pygame
+
+    def move(self, from_pos: tuple[int, int], slide: Move, player_id: int):
+        return self.__move(from_pos, slide, player_id)
 
     def get_possible_moves(self):
         moves = []
@@ -262,4 +294,4 @@ class Game(object):
             if from_pos == (4, 4):
                 return Move.TOP, Move.LEFT
         return None
-    
+    ### MODIFIED <<<

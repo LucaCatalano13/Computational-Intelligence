@@ -1,6 +1,9 @@
 import random
+import tqdm
 from game import Game, Move, Player
-from minmax import MinMaxPlayer
+
+from AlphaZeroPlayer import AlphaZeroPlayer
+from MinMaxPlayer import MinMaxPlayer
 
 class RandomPlayer(Player):
     def __init__(self) -> None:
@@ -11,6 +14,7 @@ class RandomPlayer(Player):
         move = random.choice([Move.TOP, Move.BOTTOM, Move.LEFT, Move.RIGHT])
         return from_pos, move
 
+
 class MyPlayer(Player):
     def __init__(self) -> None:
         super().__init__()
@@ -20,29 +24,39 @@ class MyPlayer(Player):
         move = random.choice([Move.TOP, Move.BOTTOM, Move.LEFT, Move.RIGHT])
         return from_pos, move
 
-class HumanPlayer(Player):
-    def __init__(self) -> None:
-        super().__init__()
-
-    def make_move(self, game: 'Game') -> tuple[tuple[int, int], Move]:
-        row, col = input("Enter the position of the piece you want to move (format r c): ").split()
-        row = int(row); col = int(col)
-        while row < 0 or row > 4 or col < 0 or col > 4:
-            print("Invalid position. Please try again.")
-            row, col = int(input("Enter the position of the piece you want to move (format r c): ").split())
-        from_pos = (row, col)
-        move = input("Enter the direction you want to move the piece (format t, b, l, r): ")
-        while move not in ["t", "b", "l", "r"]:
-            print("Invalid direction. Please try again.")
-            move = input("Enter the direction you want to move the piece (format t, b, l, r): ").split()
-        move = Move.TOP if move == "t" else Move.BOTTOM if move == "b" else Move.LEFT if move == "l" else Move.RIGHT
-        return from_pos, move
 
 if __name__ == '__main__':
-    g = Game()
-    g.print()
-    player1 = HumanPlayer()
-    player2 = MinMaxPlayer()
-    winner = g.play(player1, player2)
-    g.print()
-    print(f"Winner: Player {winner}")
+    
+    wins = 0
+    tot_games = 0
+    num_games = 2
+
+    t = tqdm.tqdm(range(num_games//2), desc="Playing games [MyPlayer 1st]")
+    for i in t:
+        g = Game()
+        player1 = AlphaZeroPlayer(num_searches=2500, C=2, verbose=False)
+        # player1 = AlphaZeroPlayer(policy_only=True)
+        # player2 = RandomPlayer()
+        player2 = MinMaxPlayer(depth=3)
+
+        winner = g.play(player1, player2)
+        wins += 1 if winner == 0 else 0
+        tot_games += 1
+        t.set_postfix(Winrate=wins/(tot_games))
+    t.close()
+
+    t = tqdm.tqdm(range(num_games//2), desc="Playing games [MyPlayer 2nd]")
+    for i in t:
+        g = Game()
+        # player1 = RandomPlayer() 
+        player1 = MinMaxPlayer(depth=3)
+        player2 = AlphaZeroPlayer(num_searches=2500, C=2, verbose=False)
+        # player2 = AlphaZeroPlayer(policy_only=True)
+
+        winner = g.play(player1, player2)
+        wins += 1 if winner == 1 else 0
+        tot_games += 1
+        t.set_postfix(Winrate=wins/(tot_games))
+    t.close()
+
+    print(f"Average Winrate {player2.__class__.__name__} vs {player1.__class__.__name__} over {num_games} games: {100*wins/num_games}%")
